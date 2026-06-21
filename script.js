@@ -1,17 +1,36 @@
-const menuBtn = document.querySelector(".menu-btn");
-const navLinks = document.querySelector(".nav-links");
+const texts = [
+    "Undergraduate",
+    "Web Developer",
+    "Photographer",
+    "Videographer"
+];
 
-menuBtn.addEventListener("click", () => {
+let index = 0;
+let charIndex = 0;
+const typingElement = document.getElementById("typing");
 
-    if(navLinks.style.display === "flex"){
-        navLinks.style.display = "none";
+function type() {
+    if (charIndex < texts[index].length) {
+        typingElement.textContent += texts[index].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, 100);
+    } else {
+        setTimeout(erase, 1500);
     }
-    else{
-        navLinks.style.display = "flex";
-        navLinks.style.flexDirection = "column";
-    }
+}
 
-});
+function erase() {
+    if (charIndex > 0) {
+        typingElement.textContent = texts[index].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, 50);
+    } else {
+        index = (index + 1) % texts.length;
+        setTimeout(type, 500);
+    }
+}
+
+type();
 
 document.getElementById("contactForm")
 .addEventListener("submit", function(e){
