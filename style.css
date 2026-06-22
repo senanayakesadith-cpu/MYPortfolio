@@ -27,8 +27,9 @@ header{
 nav{
     display:flex;
     justify-content:space-between;
-    align-items: center;
-    padding:15px 10%;
+    align-items: right;
+    padding-top: 30px;
+    padding-right: 10px;
 }
 
 .logo{
@@ -84,6 +85,7 @@ nav ul li a:hover{
     border-radius: 60%;
     object-fit: cover;
 }
+
 
 .btn{
     display:inline-block;
@@ -206,15 +208,26 @@ footer{
 
 @media(max-width:768px){
 
+    .profile-pic{
+        left: 50px;
+    }
+
     nav{
-        flex-direction:column;
+        flex-direction:column; 
     }
 
     nav ul{
         margin-top:10px;
+        align-items: right;
+        display: flex;
+        margin: auto;
+        margin-right: 0px;
     }
 
     .hero h1{
         font-size:2rem;
+    }
+    section h2{
+        padding-top: 40px;
     }
 }
