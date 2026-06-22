@@ -9,6 +9,7 @@ let index = 0;
 let charIndex = 0;
 const typingElement = document.getElementById("typing");
 
+// Typing Effect
 function type() {
     if (charIndex < texts[index].length) {
         typingElement.textContent += texts[index].charAt(charIndex);
@@ -30,13 +31,38 @@ function erase() {
     }
 }
 
-type();
+// Start typing effect only if element exists
+if (typingElement) {
+    type();
+}
 
-document.getElementById("contactForm")
-.addEventListener("submit", function(e){
+// Contact Form
+const contactForm = document.getElementById("contactForm");
 
-    e.preventDefault();
+if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert("Thank you! Your message has been received.");
+        contactForm.reset();
+    });
+}
 
-    alert("Thank you! Your message has been received.");
+// Dark Mode Toggle
+const btn = document.getElementById("themeBtn");
 
-});
+if (btn) {
+    btn.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+
+        if (document.body.classList.contains("dark-mode")) {
+            btn.innerHTML = "☀️ Light Mode";
+            btn.style.backgroundColor = "#f1c40f";
+            btn.style.color = "#000";
+        } else {
+            btn.innerHTML = "🌙 Dark Mode";
+            btn.style.backgroundColor = "#2c3e50";
+            btn.style.color = "#fff";
+        }
+    });
+}
+
